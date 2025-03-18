@@ -1,0 +1,3 @@
+services:
+  backend:
+    image: chmjkb/ebiznes-2025-ex1:lts
