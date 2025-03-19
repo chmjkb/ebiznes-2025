@@ -2,7 +2,6 @@ FROM ubuntu:22.04
 
 # As python <= 3.12 is deprecated we have to update apt repositories to have a way to install 3.10
 # for further details visit: https://gist.github.com/rutcreate/c0041e842f858ceb455b748809763ddb
-# TODO: not sure if curl is needed though
 RUN apt update && \
     apt install software-properties-common -y && \
     apt install curl -y
