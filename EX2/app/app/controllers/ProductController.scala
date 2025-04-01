@@ -11,7 +11,7 @@ import scala.collection.mutable
 class ProductController @Inject() (
     val controllerComponents: ControllerComponents
 ) extends BaseController {
-  // Mutable list of products
+
   var products: mutable.ListBuffer[Product] = mutable.ListBuffer(
     Product(1, "Laptop", 1200),
     Product(2, "Smartphone", 800),
@@ -39,7 +39,6 @@ class ProductController @Inject() (
     }
   }
 
-  /** Delete product by ID */
   def deleteById(id: String) = Action { implicit request: Request[AnyContent] =>
     id.toIntOption match {
       case Some(productId) =>
@@ -61,7 +60,6 @@ class ProductController @Inject() (
     }
   }
 
-  /** Create a new product */
   def create() = Action { implicit request: Request[AnyContent] =>
     request.body.asJson match {
       case Some(json) =>
@@ -92,30 +90,27 @@ class ProductController @Inject() (
     }
   }
 
-  /** Update product by ID */
-  def update(id: String) = Action { implicit request: Request[AnyContent] =>
-    id.toIntOption match {
-      case Some(productId) =>
-        products.find(_.id == productId) match {
-          case Some(product) =>
-            request.body.asJson match {
-              case Some(json) =>
-                (json \ "name").asOpt[String].foreach(product.name = _)
-                (json \ "price").asOpt[Int].foreach(product.price = _)
+  def update(id: String) = Action(parse.json) {
+    implicit request: Request[JsValue] =>
+      id.toIntOption match {
+        case Some(productId) =>
+          products.find(_.id == productId) match {
+            case Some(product) =>
+              (request.body \ "name").asOpt[String].foreach(product.name = _)
+              (request.body \ "price").asOpt[Int].foreach(product.price = _)
 
-                Ok(
-                  Json.obj(
-                    "message" -> "Product updated",
-                    "product" -> Json.toJson(product)
-                  )
+              Ok(
+                Json.obj(
+                  "message" -> "Product updated",
+                  "product" -> Json.toJson(product)
                 )
-              case None =>
-                BadRequest(Json.obj("error" -> "Invalid JSON"))
-            }
+              )
 
-          case None => NotFound(Json.obj("error" -> "Product not found"))
-        }
-      case None => BadRequest(Json.obj("error" -> "Invalid ID format!"))
-    }
+            case None =>
+              NotFound(Json.obj("error" -> s"Product with id: $id not found!"))
+          }
+        case None => BadRequest(Json.obj("error" -> "Invalid ID format!"))
+      }
   }
+
 }
