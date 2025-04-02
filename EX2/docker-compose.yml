@@ -1,0 +1,14 @@
+services:
+  backend:
+    image: chmjkb/ebiznes-2025-ex2:1.0
+    ports:
+      - 9000:9000
+  ngrok:
+    image: ngrok/ngrok
+    command:
+      - "http"
+      - "backend:9000"
+    ports:
+      - 4040:4040  # The ngrok inspect runs on 4040
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN}
