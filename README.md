@@ -39,8 +39,19 @@ skrypt uruchamiający aplikację via ngrok - ✅ - [Commit](https://github.com/c
 
 3.5 - Aplikacja jest w stanie odbierać wiadomości użytkowników z platformy Discord skierowane do aplikacji (bota) - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/5bdd5759f5afc1c5421b18103c41331d3bfd953a)
 
-4.0 - Zwróci listę kategorii na określone żądanie użytkownika
+4.0 - Zwróci listę kategorii na określone żądanie użytkownika - ❌
 
-4.5 - Zwróci listę produktów wg żądanej kategorii
+4.5 - Zwróci listę produktów wg żądanej kategorii - ❌
 
-5.0 - Aplikacja obsłuży dodatkowo jedną z platform: Slack, Messenger,
+5.0 - Aplikacja obsłuży dodatkowo jedną z platform: Slack, Messenger - ❌
+
+### Exercise 4
+3.0 - Należy stworzyć aplikację we frameworki echo w j. Go, która będzie miała kontroler Produktów zgodny z CRUD - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/37e12440648e7e574ba2f804cc9cb204f2f3bdab)
+
+3.5 - Należy stworzyć model Produktów wykorzystując gorm oraz wykorzystać model do obsługi produktów (CRUD) w kontrolerze (zamiast listy) - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/37e12440648e7e574ba2f804cc9cb204f2f3bdab)
+
+4.0 - Należy dodać model Koszyka oraz dodać odpowiedni endpoint - ❌
+
+4.5 - Należy stworzyć model kategorii i dodać relację między kategorią, a produktem - ❌
+
+5.0 - pogrupować zapytania w gorm’owe scope'y -❌
