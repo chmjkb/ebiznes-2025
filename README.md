@@ -54,4 +54,37 @@ skrypt uruchamiający aplikację via ngrok - ✅ - [Commit](https://github.com/c
 
 4.5 - Należy stworzyć model kategorii i dodać relację między kategorią, a produktem - ❌
 
-5.0 - pogrupować zapytania w gorm’owe scope'y -❌
+5.0 - pogrupować zapytania w gorm’owe scope'y - ❌
+
+### Exercise 5
+3.0 - W ramach projektu należy stworzyć dwa komponenty: Produkty oraz Płatności. Płatności powinny wysyłać do aplikacji serwerowej dane, a w Produktach powinniśmy pobierać dane o produktach z aplikacji serwerowej - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/ff5aa8ccfb9c9c8011d9a5e54b7fcdac916522fb)
+
+3.5 - Należy dodać Koszyk wraz z widokiem; należy wykorzystać routing - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/11d8257d069292d1d96e1c357d44ca182b0b8433)
+
+4.0 - Dane pomiędzy wszystkimi komponentami powinny być przesyłane za pomocą React hooks - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/11d8257d069292d1d96e1c357d44ca182b0b8433)
+
+4.5 - Należy dodać skrypt uruchamiający aplikację serwerową oraz kliencką na dockerze via docker-compose - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/7e0e24cfa12c3070c6fedfe5f39a57ba337d2f0f)
+
+5.0 - Należy wykorzystać axios’a oraz dodać nagłówki pod CORS - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/7e0e24cfa12c3070c6fedfe5f39a57ba337d2f0f)
+
+### Exercise 6
+
+Zadanie 6 Testy
+Należy stworzyć 20 przypadków testowych w jednym z rozwiązań:
+
+- Cypress JS (JS)
+- Selenium (Kotlin, Python, Java, JS, Go, Scala)
+
+Testy mają w sumie zawierać minimum 50 asercji (3.5). Mają również
+uruchamiać się na platformie Browserstack (5.0). Proszę pamiętać o
+stworzeniu darmowego konta via https://education.github.com/pack.
+
+3.0 Należy stworzyć 20 przypadków testowych w CypressJS lub Selenium
+(Kotlin, Python, Java, JS, Go, Scala)
+3.5 Należy rozszerzyć testy funkcjonalne, aby zawierały minimum 50
+asercji
+4.0 Należy stworzyć testy jednostkowe do wybranego wcześniejszego
+projektu z minimum 50 asercjami
+4.5 Należy dodać testy API, należy pokryć wszystkie endpointy z
+minimum jednym scenariuszem negatywnym per endpoint
+5.0 Należy uruchomić testy funkcjonalne na Browserstacku
