@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import '@/styles/Payment.css'; // Make sure this path matches your file structure
-import axios from 'axios';
+import axiosInstance from '@/api';
+import { BACKEND_BASE_URL } from '@/consts';
 import { useCartContext } from '@/context/CartContext';
+import '@/styles/Payment.css';
+import React, { useState } from 'react';
 
 export default function Payments() {
   const { cartValue, clearCart } = useCartContext();
@@ -19,7 +20,7 @@ export default function Payments() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/payments', { ...formData, amount: cartValue });
+      await axiosInstance.post(BACKEND_BASE_URL + '/payments', { ...formData, amount: cartValue });
       clearCart();
     } catch (e) {
       console.error(e);

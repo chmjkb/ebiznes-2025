@@ -42,6 +42,7 @@ fun main() {
 
             allowMethod(HttpMethod.Get)
             allowMethod(HttpMethod.Post)
+            allowMethod(HttpMethod.Options)
             allowHeader(HttpHeaders.ContentType)
         }
 
