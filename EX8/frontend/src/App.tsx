@@ -43,6 +43,19 @@ function App() {
     )
   }
 
+  const handleGithubLogin = () => {
+    const width = 500
+    const height = 600
+    const left = window.screenX + (window.outerWidth - width) / 2
+    const top = window.screenY + (window.outerHeight - height) / 2
+    
+    window.open(
+      'http://localhost:8000/auth/login/github',
+      'GitHub OAuth',
+      `width=${width},height=${height},left=${left},top=${top}`
+    )
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
@@ -134,6 +147,9 @@ function App() {
           </div>
           <button onClick={handleGoogleLogin} className="google-button">
             Sign in with Google
+          </button>
+          <button onClick={handleGithubLogin} className="github-button">
+            Sign in with GitHub
           </button>
         </>
       )}
