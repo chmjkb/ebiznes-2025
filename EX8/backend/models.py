@@ -10,6 +10,7 @@ class User(Base):
     
     username = Column(String, primary_key=True, index=True)
     password_hash = Column(String, nullable=False)
+    oauth_provider = Column(String, nullable=True)
     
     tokens = relationship("Token", back_populates="user", cascade="all, delete-orphan")
 

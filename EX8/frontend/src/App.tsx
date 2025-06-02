@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 interface User {
@@ -12,6 +12,36 @@ function App() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isLoginMode, setIsLoginMode] = useState(true)
+
+  useEffect(() => {
+    // Listen for OAuth callback messages
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== 'http://localhost:8000') return
+      
+      if (event.data.type === 'oauth-callback') {
+        setUser({
+          username: event.data.username,
+          token: event.data.token
+        })
+      }
+    }
+
+    window.addEventListener('message', handleMessage)
+    return () => window.removeEventListener('message', handleMessage)
+  }, [])
+
+  const handleGoogleLogin = () => {
+    const width = 500
+    const height = 600
+    const left = window.screenX + (window.outerWidth - width) / 2
+    const top = window.screenY + (window.outerHeight - height) / 2
+    
+    window.open(
+      'http://localhost:8000/auth/login/google',
+      'Google OAuth',
+      `width=${width},height=${height},left=${left},top=${top}`
+    )
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -97,6 +127,16 @@ function App() {
         {error && <div className="error">{error}</div>}
         <button type="submit">{isLoginMode ? 'Login' : 'Register'}</button>
       </form>
+      {isLoginMode && (
+        <>
+          <div className="divider">
+            <span>OR</span>
+          </div>
+          <button onClick={handleGoogleLogin} className="google-button">
+            Sign in with Google
+          </button>
+        </>
+      )}
       <div className="toggle-mode">
         <p>
           {isLoginMode ? "Don't have an account? " : "Already have an account? "}

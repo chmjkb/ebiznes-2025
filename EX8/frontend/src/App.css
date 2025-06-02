@@ -73,3 +73,43 @@ button:hover {
 .toggle-mode a:hover {
   text-decoration: underline;
 }
+
+.divider {
+  margin: 1.5rem 0;
+  position: relative;
+  text-align: center;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.divider span {
+  background-color: white;
+  padding: 0 1rem;
+  position: relative;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.google-button {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.google-button:hover {
+  background-color: #f8f8f8;
+  border-color: #999;
+}
