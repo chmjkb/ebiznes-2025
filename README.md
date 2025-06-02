@@ -79,12 +79,32 @@ Testy mają w sumie zawierać minimum 50 asercji (3.5). Mają również
 uruchamiać się na platformie Browserstack (5.0). Proszę pamiętać o
 stworzeniu darmowego konta via https://education.github.com/pack.
 
-3.0 Należy stworzyć 20 przypadków testowych w CypressJS lub Selenium
-(Kotlin, Python, Java, JS, Go, Scala)
+3.0 - Należy stworzyć 20 przypadków testowych w CypressJS lub Selenium - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/a548f225053cb1c4fc0f0944e5a6863230814084)
 3.5 Należy rozszerzyć testy funkcjonalne, aby zawierały minimum 50
-asercji
+asercji - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/a548f225053cb1c4fc0f0944e5a6863230814084)
 4.0 Należy stworzyć testy jednostkowe do wybranego wcześniejszego
-projektu z minimum 50 asercjami
+projektu z minimum 50 asercjami - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/6dde3f714c2869f13cd996932714664571b8598c)
 4.5 Należy dodać testy API, należy pokryć wszystkie endpointy z
-minimum jednym scenariuszem negatywnym per endpoint
-5.0 Należy uruchomić testy funkcjonalne na Browserstacku
+minimum jednym scenariuszem negatywnym per endpoint - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/6dde3f714c2869f13cd996932714664571b8598c)
+5.0 Należy uruchomić testy funkcjonalne na Browserstacku - ❌
+
+### Exercise 7
+
+3.0 - Należy dodać linter do odpowiedniego kodu aplikacji serwerowej w
+hookach gita - ❌
+3.5 - Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod
+aplikacji serwerowej) - ❌
+4.0 - Należy wyeliminować wszystkie zapaszki w kodzie w Sonarze (kod
+aplikacji serwerowej) - ❌
+4.5 - Należy wyeliminować wszystkie podatności oraz błędy bezpieczeństwa
+w kodzie w Sonarze (kod aplikacji serwerowej) - ❌
+5.0 - Należy wyeliminować wszystkie błędy oraz zapaszki w kodzie
+aplikacji klienckiej - ❌
+
+### Exercise 8
+
+3.0 - Logowanie przez aplikację serwerową (bez Oauth2) - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/b196bf6d3e2af29aba08b857ecf14cb74e5f9d24)
+3.5 - Rejestracja przez aplikację serwerową (bez Oauth2) - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/47be653cade811eb99717088c4ead42187973d9d)
+4.0 - Logowanie via Google OAuth2 - ❌
+4.5 - Logowanie via Facebook lub Github OAuth2 - ❌
+5.0 - Zapisywanie danych logowania OAuth2 po stronie serwera - ❌
