@@ -105,8 +105,8 @@ aplikacji klienckiej - ❌
 
 3.5 - Rejestracja przez aplikację serwerową (bez Oauth2) - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/47be653cade811eb99717088c4ead42187973d9d)
 
-4.0 - Logowanie via Google OAuth2 - ❌
+4.0 - Logowanie via Google OAuth2 - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/19269c1dfbc363bdd1f05cd4d307e5dc6490b48a)
 
-4.5 - Logowanie via Facebook lub Github OAuth2 - ❌
+4.5 - Logowanie via Facebook lub Github OAuth2 - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/255fcc966d6ea39f065d82ca3c3414653c43deed)
 
 5.0 - Zapisywanie danych logowania OAuth2 po stronie serwera - ❌
