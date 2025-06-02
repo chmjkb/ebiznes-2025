@@ -60,3 +60,16 @@ button:hover {
   color: #666;
   font-size: 0.9rem;
 }
+
+.toggle-mode {
+  margin-top: 1.5rem;
+}
+
+.toggle-mode a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.toggle-mode a:hover {
+  text-decoration: underline;
+}

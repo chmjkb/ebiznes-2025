@@ -11,13 +11,16 @@ function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [isLoginMode, setIsLoginMode] = useState(true)
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
 
+    const endpoint = isLoginMode ? 'login' : 'register'
+
     try {
-      const response = await fetch('http://localhost:8000/auth/login', {
+      const response = await fetch(`http://localhost:8000/auth/${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,7 +29,8 @@ function App() {
       })
 
       if (!response.ok) {
-        throw new Error('Invalid credentials')
+        const errorData = await response.json()
+        throw new Error(errorData.detail || 'Request failed')
       }
 
       const data = await response.json()
@@ -34,7 +38,7 @@ function App() {
       setUsername('')
       setPassword('')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed')
+      setError(err instanceof Error ? err.message : 'Request failed')
     }
   }
 
@@ -66,8 +70,8 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
+      <h1>{isLoginMode ? 'Login' : 'Register'}</h1>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -76,6 +80,7 @@ function App() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            minLength={isLoginMode ? 1 : 3}
           />
         </div>
         <div className="form-group">
@@ -86,14 +91,29 @@ function App() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            minLength={isLoginMode ? 1 : 6}
           />
         </div>
         {error && <div className="error">{error}</div>}
-        <button type="submit">Login</button>
+        <button type="submit">{isLoginMode ? 'Login' : 'Register'}</button>
       </form>
-      <div className="hint">
-        <p>Try: admin/admin123 or user/user123</p>
+      <div className="toggle-mode">
+        <p>
+          {isLoginMode ? "Don't have an account? " : "Already have an account? "}
+          <a href="#" onClick={(e) => {
+            e.preventDefault()
+            setIsLoginMode(!isLoginMode)
+            setError('')
+          }}>
+            {isLoginMode ? 'Register' : 'Login'}
+          </a>
+        </p>
       </div>
+      {isLoginMode && (
+        <div className="hint">
+          <p>Test users: admin/admin123 or user/user123</p>
+        </div>
+      )}
     </div>
   )
 }

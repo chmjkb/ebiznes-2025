@@ -7,7 +7,7 @@ from typing import Optional
 
 from database import get_db
 from models import User, Token
-from schemas import LoginRequest, LoginResponse, UserResponse
+from schemas import LoginRequest, LoginResponse, UserResponse, RegisterRequest
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -71,6 +71,31 @@ async def logout(
         db.commit()
         return {"message": "Logged out successfully"}
     raise HTTPException(status_code=401, detail="Invalid token")
+
+@router.post("/register", response_model=LoginResponse)
+async def register(request: RegisterRequest, db: Session = Depends(get_db)):
+    # Check if user already exists
+    existing_user = db.query(User).filter(User.username == request.username).first()
+    if existing_user:
+        raise HTTPException(status_code=400, detail="Username already exists")
+    
+    new_user = User(
+        username=request.username,
+        password_hash=hash_password(request.password)
+    )
+    db.add(new_user)
+    db.commit()
+    
+    token_string = create_token()
+    token = Token(
+        token=token_string,
+        username=new_user.username,
+        created_at=datetime.utcnow()
+    )
+    db.add(token)
+    db.commit()
+    
+    return LoginResponse(token=token_string, username=new_user.username)
 
 @router.get("/me", response_model=UserResponse)
 async def get_me(username: str = Depends(get_current_user)):
