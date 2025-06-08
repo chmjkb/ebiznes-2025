@@ -1,0 +1,1 @@
+### [Sonarcloud code analysis](https://sonarcloud.io/summary/overall?id=chmjkb_ebiznes-2025&branch=main)
