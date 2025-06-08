@@ -99,6 +99,89 @@ function App() {
     }
   }
 
+  const conversationStarters = [
+    "Hello! How are you today?",
+    "Can you help me write a creative story?",
+    "What's the weather like in space?",
+    "Explain quantum physics in simple terms",
+    "Tell me something interesting!"
+  ]
+
+  const conversationClosings = [
+    "Thanks! 👋",
+    "Goodbye!",
+    "Perfect!",
+    "Great chat!",
+    "Take care!"
+  ]
+
+  const handleExampleClick = (example: string) => {
+    setInputMessage(example)
+    // Auto-send the message directly
+    sendExampleMessage(example)
+  }
+
+  const sendExampleMessage = async (message: string) => {
+    if (!message.trim() || isLoading) return
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: message,
+      timestamp: new Date()
+    }
+
+    setMessages(prev => [...prev, userMessage])
+    setInputMessage('')
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const conversationHistory = [
+        ...messages.map(msg => ({
+          role: msg.role,
+          content: msg.content
+        })),
+        {
+          role: 'user',
+          content: message
+        }
+      ]
+
+      const response = await fetch('http://localhost:8000/api/chat_completion', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: conversationHistory,
+          model: 'llama3-8b-8192',
+          temperature: 0.7,
+          max_tokens: 1024
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      const data = await response.json()
+      
+      const assistantMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: data.response,
+        timestamp: new Date()
+      }
+
+      setMessages(prev => [...prev, assistantMessage])
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div className="chat-container">
       <div className="chat-header">
@@ -109,7 +192,38 @@ function App() {
       <div className="messages-container" ref={messagesContainerRef}>
         {messages.length === 0 && (
           <div className="empty-state">
-            <p>Start a conversation by typing a message below</p>
+            <p>Start a conversation with one of these examples:</p>
+            <div className="example-messages">
+              {conversationStarters.map((example, index) => (
+                <button 
+                  key={index}
+                  className="example-button"
+                  onClick={() => handleExampleClick(example)}
+                  disabled={isLoading}
+                >
+                  {example}
+                </button>
+              ))}
+            </div>
+            <p className="or-divider">or type your own message below</p>
+          </div>
+        )}
+
+        {messages.length > 0 && (
+          <div className="conversation-closings">
+            <p className="closings-title">Quick closings:</p>
+            <div className="example-messages closings">
+              {conversationClosings.map((closing, index) => (
+                <button 
+                  key={index}
+                  className="example-button closing-button"
+                  onClick={() => handleExampleClick(closing)}
+                  disabled={isLoading}
+                >
+                  {closing}
+                </button>
+              ))}
+            </div>
           </div>
         )}
         
