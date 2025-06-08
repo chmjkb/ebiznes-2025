@@ -85,7 +85,7 @@ minimum jednym scenariuszem negatywnym per endpoint - ✅ - [Commit](https://git
 ### Exercise 7
 
 3.0 - Należy dodać linter do odpowiedniego kodu aplikacji serwerowej w
-hookach gita - ❌
+hookach gita - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/04bab8d449425d63579a33e114915bf82a3fb86e)
 
 3.5 - Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod
 aplikacji serwerowej) - ❌
