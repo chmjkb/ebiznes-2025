@@ -88,7 +88,7 @@ minimum jednym scenariuszem negatywnym per endpoint - ✅ - [Commit](https://git
 hookach gita - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/04bab8d449425d63579a33e114915bf82a3fb86e)
 
 3.5 - Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod
-aplikacji serwerowej) - ❌
+aplikacji serwerowej) - ✅
 
 4.0 - Należy wyeliminować wszystkie zapaszki w kodzie w Sonarze (kod
 aplikacji serwerowej) - ❌
@@ -110,3 +110,18 @@ aplikacji klienckiej - ❌
 4.5 - Logowanie via Facebook lub Github OAuth2 - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/255fcc966d6ea39f065d82ca3c3414653c43deed)
 
 5.0 - Zapisywanie danych logowania OAuth2 po stronie serwera - ❌
+
+### Exercise 9
+3.0 - Należy stworzyć po stronie serwerowej osobny serwis do łącznia z
+chatGPT do usługi chat - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/3f29c6ef88f0b1fa0d3132d57926f04cb3be9a8d)
+
+3.5 należy stworzyć interfejs frontowy dla użytkownika, który
+komunikuje się z serwisem; odpowiedzi powinny być wysyałen do
+frontendowego interfejsu - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/79a92220aba4f37d96e7ced8f314c230a648e417)
+
+4.0 stworzyć listę 5 różnych otwarć oraz zamknięć rozmowy - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/dd8ad414ad6af343145c2f8f6b8930f34219b9ff)
+
+4.5 filtrowanie po zagadnieniach związanych ze sklepem (np.
+ograniczenie się jedynie do ubrań oraz samego sklepu) do GPT - ❌
+
+5.0 filtrowanie odpowiedzi po sentymencie - ❌
