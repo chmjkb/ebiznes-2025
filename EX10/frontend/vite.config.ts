@@ -5,6 +5,6 @@ export default defineConfig({
   plugins: [react()],
   server: { 
     port: 3000,
-    allowedHosts: ['ebiznes-2025-frontend.onrender.com/']
+    allowedHosts: ['ebiznes-2025-frontend.onrender.com']
   },
 })
