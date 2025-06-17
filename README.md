@@ -115,13 +115,26 @@ aplikacji klienckiej - ❌
 3.0 - Należy stworzyć po stronie serwerowej osobny serwis do łącznia z
 chatGPT do usługi chat - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/3f29c6ef88f0b1fa0d3132d57926f04cb3be9a8d)
 
-3.5 należy stworzyć interfejs frontowy dla użytkownika, który
+3.5 - Należy stworzyć interfejs frontowy dla użytkownika, który
 komunikuje się z serwisem; odpowiedzi powinny być wysyałen do
 frontendowego interfejsu - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/79a92220aba4f37d96e7ced8f314c230a648e417)
 
-4.0 stworzyć listę 5 różnych otwarć oraz zamknięć rozmowy - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/dd8ad414ad6af343145c2f8f6b8930f34219b9ff)
+4.0 - Stworzyć listę 5 różnych otwarć oraz zamknięć rozmowy - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/dd8ad414ad6af343145c2f8f6b8930f34219b9ff)
 
-4.5 filtrowanie po zagadnieniach związanych ze sklepem (np.
+4.5 - Filtrowanie po zagadnieniach związanych ze sklepem (np.
 ograniczenie się jedynie do ubrań oraz samego sklepu) do GPT - ❌
 
-5.0 filtrowanie odpowiedzi po sentymencie - ❌
+5.0 - Filtrowanie odpowiedzi po **sentymencie** - ❌
+
+### Exercise 10
+
+3.0 - Należy stworzyć odpowiednie instancje po stronie chmury na dockerze - ✅ - Frontend jest zdeployowany pod adresem https://ebiznes-2025-frontend.onrender.com/. Jest na darmowym tierze, więc będzie się na początku ładować. Frontend komunikuje się bezpośrednio ze zdeployowanym backendem. 
+
+3.5 - Stworzyć odpowiedni pipeline w Github Actions do budowania aplikacji (np. via fatjar) - ✅ - [Commit](https://github.com/chmjkb/ebiznes-2025/commit/77c7eca7ddcdb6844523f11a5e31d4d809bf6d0b)
+
+4.0 - Dodać notyfikację mailową o zbudowaniu aplikacji
+
+4.5 - Dodać krok z deploymentem aplikacji serwerowej oraz klienckiej na chmurę
+
+5.0 - Dodać uruchomienie regresyjnych testów automatycznych
+(funkcjonalnych) jako krok w Actions
