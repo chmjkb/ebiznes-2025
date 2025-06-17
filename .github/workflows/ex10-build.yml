@@ -1,0 +1,54 @@
+name: EX10 Build Pipeline
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'EX10/**'
+      - '.github/workflows/ex10-build.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'EX10/**'
+      - '.github/workflows/ex10-build.yml'
+
+jobs:
+  build-backend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Build Backend Docker Image
+      run: |
+        cd EX10/backend
+        docker build -t ex10-backend:${{ github.sha }} .
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Build Frontend Docker Image
+      run: |
+        cd EX10/frontend
+        docker build -t ex10-frontend:${{ github.sha }} .
+
+  build-compose:
+    runs-on: ubuntu-latest
+    needs: [build-backend, build-frontend]
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Docker Compose
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Build with Docker Compose
+      run: |
+        cd EX10
+        docker compose build
